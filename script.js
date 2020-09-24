@@ -2,7 +2,7 @@
 let number = Number(localStorage.getItem('task_count'));
 let task = '';
 let n = 1;
-//let a = Number(localStorage.length);
+let list;
 //localStorage.clear();
 
 if (number == null) {
@@ -44,6 +44,10 @@ function addTask (task) {
       }
   });
 
+  $('ul').each(function(){
+    list = $(this).find('li').length;
+  });
+
   $('.clear').click(function () {
     number = $(this).parent().data('order');
     task = $(this).val();
@@ -51,7 +55,7 @@ function addTask (task) {
     $(this).parent().remove();
     localStorage.removeItem('task_value[' + number + ']', task);
 
-    localStorage.setItem('task_count', number);
+    localStorage.setItem('task_count', list - 1);
   });
 
 $('.create-task').submit(function () {
