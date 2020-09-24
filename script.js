@@ -17,8 +17,10 @@ for (let i = 1; i <= number; i++) {
 
 $('ul .task input[type="text"]').keyup(function () {
   let order = $(this).parent().data('order');
+  let newTask = $(this).val();
   localStorage.setItem('task_value[' + order + ']', newTask);
-  });
+});
+
 
 function addTask (task) {
       $('#add-task').find('ul').append('<li class="task" data-order="' + n + '">' +
@@ -29,44 +31,29 @@ function addTask (task) {
       ++n;
 }
 
-
   $('[type="checkbox"]').click(function () {
 
       $(this).parent().find('[type="text"]').attr('disabled', true).toggleClass('checked');
       $(this).attr('checked', true);
       --n;
 
-
-
-        if ($('[type="text"]').hasClass('checked')) {
-          $('.clear').click(function () {
-          $(this).parent().remove();
-
-          localStorage.removeItem('task_value[' + number + ']', task);
-          localStorage.setItem('task_count', number-1);
-
-          if (number == 0) {
-            localStorage.setItem('task_count', 0);
-            number = 0;
-          }
-          });
-        }
-
-
-
-        console.log(n_task);
-
-
-    //  console.log(n_task);
-
       if (!$(this).parent().find('[type="text"]').hasClass('checked')) {
         $(this).parent().find('[type="text"]').attr('disabled', false);
         $(this).attr('checked', false);
-
       }
+  });
 
-      $('.task-counter').find('span').text('' + n + '');
 
+  $('.clear').click(function () {
+
+    if (!$(this).parent().find('[type="text"]').hasClass('checked')) {
+      alert('This task is not done');
+    } else {
+      $(this).parent().remove();
+
+      localStorage.removeItem('task_value[' + number + ']', task);
+      localStorage.setItem('task_count', number-1);
+    }
   });
 
 
