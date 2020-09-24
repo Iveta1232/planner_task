@@ -2,7 +2,7 @@
 let number = Number(localStorage.getItem('task_count'));
 let task = '';
 let n = 1;
-localStorage.clear();
+//localStorage.clear();
 
 if (number == null) {
   localStorage.setItem('task_count', 0);
