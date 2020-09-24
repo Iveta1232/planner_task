@@ -2,6 +2,7 @@
 let number = Number(localStorage.getItem('task_count'));
 let task = '';
 let n = 1;
+//let a = Number(localStorage.length);
 //localStorage.clear();
 
 if (number == null) {
@@ -43,19 +44,15 @@ function addTask (task) {
       }
   });
 
-
   $('.clear').click(function () {
+    number = $(this).parent().data('order');
+    task = $(this).val();
 
-    if (!$(this).parent().find('[type="text"]').hasClass('checked')) {
-      alert('This task is not done');
-    } else {
-      $(this).parent().remove();
+    $(this).parent().remove();
+    localStorage.removeItem('task_value[' + number + ']', task);
 
-      localStorage.removeItem('task_value[' + number + ']', task);
-      localStorage.setItem('task_count', number-1);
-    }
+    localStorage.setItem('task_count', number);
   });
-
 
 $('.create-task').submit(function () {
   event.preventDefault();
@@ -65,8 +62,7 @@ $('.create-task').submit(function () {
   let number = Number(localStorage.getItem('task_count'));
   input.val('');
 
-
-  $('.task-counter').find('span').replaceWith('' + n + '');
+  $('.task-counter').find('span').replaceWith('' + number + '');
 
   localStorage.setItem('task_count', ++number);
   addTask(task);
