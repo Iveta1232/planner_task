@@ -1,8 +1,8 @@
 main {
   width: 500px;
-  height: 300px;
+  min-height: 300px;
   margin: auto;
-  margin-top: 200px;
+  margin-top: 20px;
   text-align: center;
 }
 h1 {
@@ -10,7 +10,7 @@ h1 {
 }
 .planner {
   width: 95%;
-  height: 250px;
+  min-height: 250px;
   margin: auto;
 }
 .create-task {
@@ -48,7 +48,6 @@ input[type="checkbox"] {
   width: 80%;
   margin-top: 10px;
 }
-
 ul {
   padding-left: 0;
 }
